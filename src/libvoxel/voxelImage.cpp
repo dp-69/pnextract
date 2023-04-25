@@ -73,7 +73,7 @@ template<typename T> bool selectPore( stringstream& ins, voxelImageT<T>& vImg)  
 	return 0;
 }
 
-template<typename T,  enable_if_t<std::is_arithmetic<T>::value, int> = 0> 
+template<typename T,  std::enable_if_t<std::is_arithmetic<T>::value, int> = 0> 
 bool rescale( stringstream& ins, voxelImageT<T>& vImg)  {
 	KeyHint("range_min range_max;// rescale values to be within range");
 	(cout<<"  rescaling voxel values to [ ").flush();
@@ -470,7 +470,7 @@ bool mapFrom( stringstream& ins, voxelImageT<T>& vImg)  {
 
 
 
-template<typename T,  enable_if_t<std::is_arithmetic<T>::value, int> = 0> 
+template<typename T,  std::enable_if_t<std::is_arithmetic<T>::value, int> = 0> 
 std::unordered_map<string,bool(*)( stringstream&, voxelImageT<T>&)>
  namedProcesses()  {
 	typedef bool(*ProcessP)( stringstream&  ins, voxelImageT<T>& vImg);
@@ -530,7 +530,7 @@ std::unordered_map<string,bool(*)( stringstream&, voxelImageT<T>&)>
 }
 
 
-template<typename T,  enable_if_t<std::is_class<T>::value, int> = 0> 
+template<typename T,  std::enable_if_t<std::is_class<T>::value, int> = 0> 
 std::unordered_map<string,bool(*)( stringstream&, voxelImageT<T>&)> namedProcesses()  {
 	typedef bool(*ProcessP)( stringstream&  ins, voxelImageT<T>& vImg);
 	return std::unordered_map<string,ProcessP>{

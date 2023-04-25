@@ -10,8 +10,8 @@
 
 /// mkdir getcwd chdir
 //#if (__cplusplus >= 201703L)
-	#include <experimental/filesystem>
-	namespace filesystem = std::experimental::filesystem;
+	#include <filesystem>
+	namespace filesystem = std::filesystem;
 	//#define mkdirs filesystem::create_directories
 	//#define getpwd filesystem::current_path
 	inline std::string getpwd() { return filesystem::current_path().string(); }
@@ -90,8 +90,8 @@ namespace std {}
 
 	//! Validation/production phase ensure/assert. Usage:
 	//!   \code{.cpp} ensure(condition, "message", int throw_on_error=false); \endcode
-	 #define ensure(...)  GET_MACRO3(__VA_ARGS__, ensure3, ensure2, ensure1, "Only 1 to 3 args please")(__VA_ARGS__)
-	 #define alert(...)  GET_MACRO3(false,__VA_ARGS__, ensure3, ensure2, "Only 1 to 2 args please")(false,__VA_ARGS__)
+	 #define ensure(...)  //GET_MACRO3(__VA_ARGS__, ensure3, ensure2, ensure1, "Only 1 to 3 args please")(__VA_ARGS__)
+	 #define alert(...)  //GET_MACRO3(false,__VA_ARGS__, ensure3, ensure2, "Only 1 to 2 args please")(false,__VA_ARGS__)
 
 	 #define ifnot(isOk, msg)  if(!(isOk)&& std::cout<<msg<<endl)
 
